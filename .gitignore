@@ -1,0 +1,30 @@
+# Codex/browser visual analysis artifacts
+_analysis_shots/
+wedding-site/
+screenshots/
+playwright-report/
+test-results/
+
+# Downloaded source/reference snapshots
+_source_live.html
+_raw_style*.css
+_temp_style.css
+css_style_block_output.txt
+matched_lines_output.txt
+extract_css_props.py
+
+# Local planning/working notes
+plans/
+
+# Python/Node/editor caches
+__pycache__/
+*.py[cod]
+node_modules/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local development logs
+*.log
+*.pid
