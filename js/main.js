@@ -3,7 +3,7 @@
  * Main JavaScript: artboard scaling, responsive breakpoints, scroll animations,
  * heart pulse, lazy loading, form handling
  *
- * Design: 1200x5943px desktop artboard and 320x4533px mobile artboard.
+ * Design: 1200x7250px desktop artboard and 320x5740px mobile artboard.
  * Animations: IntersectionObserver-based reveal + JS pulse
  */
 
@@ -37,7 +37,7 @@
             var mobileHeight =
                 artboard.getAttribute('data-artboard-height-res-320') ||
                 artboard.getAttribute('data-artboard-height') ||
-                '4533';
+                '5740';
 
             artboard.style.width = '100%';
             artboard.style.height = cleanUnit(mobileHeight) + 'px';
@@ -46,7 +46,7 @@
 
         artboard.style.width = DESKTOP_ARTBOARD_WIDTH + 'px';
         artboard.style.height =
-            cleanUnit(artboard.getAttribute('data-artboard-height') || '5943') + 'px';
+            cleanUnit(artboard.getAttribute('data-artboard-height') || '7250') + 'px';
     }
 
     // ──────────────────────────────────────────────
@@ -341,9 +341,7 @@
 
             // Simple validation
             var nameInput = this.querySelector('.t-input[data-tilda-req="1"]');
-            var radioChecked = this.querySelector(
-                'input[type="radio"][data-tilda-req="1"]:checked'
-            );
+            var radioChecked = this.querySelector('input[name="attendance"]:checked');
 
             // Reset any previous error styling
             if (nameInput) {

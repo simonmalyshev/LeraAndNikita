@@ -551,7 +551,7 @@ body {
 }
 
 .t-input-group {
-    margin-bottom: 20px;
+    margin: 0 0 26px;
     width: 100%;
 }
 
@@ -570,6 +570,21 @@ body {
     box-sizing: border-box;
 }
 
+.style-reference-photo .tn-atom,
+.style-reference-photo .tn-atom__img {
+    width: 100%;
+    height: 100%;
+}
+
+.style-reference-photo .tn-atom {
+    overflow: hidden;
+}
+
+.style-reference-photo .tn-atom__img {
+    display: block;
+    object-fit: cover;
+}
+
 .t-input::placeholder {
     color: #142c0c;
     opacity: 0.6;
@@ -580,7 +595,8 @@ body {
 }
 
 .t-submit {
-    width: 202px;
+    width: 100%;
+    max-width: 360px;
     height: 50px;
     background-color: #969a65;
     color: #ffffff;
@@ -620,41 +636,91 @@ body {
 
 .t-form__submit {
     text-align: center;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 /* ------------------------------------------------------------
    10. Radio Button & Input Title Styles
     ------------------------------------------------------------ */
 
-.t-radio {
+.t-radio,
+.t-checkbox {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    align-items: flex-start;
+    gap: 12px;
     cursor: pointer;
     font-family: 'Montserrat', Arial, sans-serif;
     font-size: 16px;
+    line-height: 1.4;
     color: #142c0c;
-    margin-bottom: 5px;
 }
 
-.t-radio input[type="radio"] {
+.t-radio input[type="radio"],
+.t-checkbox input[type="checkbox"] {
     accent-color: #a78309;
-    width: 18px;
-    height: 18px;
-    margin: 0;
+    flex: 0 0 20px;
+    width: 20px;
+    height: 20px;
+    margin: 1px 0 0;
 }
 
-.t-radio__wrapper {
-    margin-top: 5px;
+.t-choice-group {
+    padding: 0;
+    border: 0;
+}
+
+.t-choice-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.t-drinks-list {
+    gap: 8px;
 }
 
 .t-input-title {
+    display: block;
     color: #142c0c;
     font-family: 'Montserrat', Arial, sans-serif;
     font-size: 16px;
     font-weight: 400;
-    margin-bottom: 5px;
+    line-height: 1.4;
+    margin: 0 0 8px;
+}
+
+#rec718911148 .tn-elem[data-elem-id="1745854458145"],
+#rec718911148 .tn-elem[data-elem-id="1745854490104"] {
+    display: none;
+}
+
+#rec718911148 .tn-elem[data-elem-id="1710312698233"] {
+    width: 300px !important;
+}
+
+@media screen and (max-width: 1199px) {
+    #rec718911148 .tn-elem[data-elem-id="1710312698233"] {
+        left: calc(50% - 160px + -10px) !important;
+        width: 250px !important;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="1710312698233"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="1710312698242"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="1710312698250"] .tn-atom {
+        font-size: 23px !important;
+    }
+
+    .t-input,
+    .t-input-title,
+    .t-radio,
+    .t-checkbox {
+        font-size: 14px;
+    }
+
+    .t-input {
+        padding: 0 12px;
+    }
 }
 
 /* ------------------------------------------------------------
