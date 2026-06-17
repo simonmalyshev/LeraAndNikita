@@ -158,12 +158,16 @@
         var animElements = document.querySelectorAll('.tn-elem[data-animate-style]');
         if (!animElements.length) return;
 
+        var viewportWidth = document.documentElement.clientWidth;
         var MOBILE_BREAKPOINT = 640;
-        var isMobile = document.documentElement.clientWidth <= MOBILE_BREAKPOINT;
+        var isMobile = viewportWidth <= MOBILE_BREAKPOINT;
+        var usesMobileArtboard = viewportWidth < DESKTOP_ARTBOARD_WIDTH;
 
         // Pre-set CSS custom properties so they're available before animation starts
         animElements.forEach(function (el) {
-            var distance = el.getAttribute('data-animate-distance');
+            var distance = usesMobileArtboard
+                ? el.getAttribute('data-animate-distance-res-320') || el.getAttribute('data-animate-distance')
+                : el.getAttribute('data-animate-distance');
 
             if (distance) {
                 el.style.setProperty('--anim-distance', distance + 'px');
@@ -176,14 +180,16 @@
                     if (!entry.isIntersecting) return;
 
                     var el = entry.target;
-                    var duration = el.getAttribute('data-animate-duration') || '3';
-                    var delay = el.getAttribute('data-animate-delay') || '0';
+                    var duration = el.getAttribute('data-animate-duration') || '1';
+                    var delay = usesMobileArtboard
+                        ? el.getAttribute('data-animate-delay-res-320') || el.getAttribute('data-animate-delay') || '0'
+                        : el.getAttribute('data-animate-delay') || '0';
 
-                    // Override CSS hardcoded animation values with data attributes
-                    el.style.animationDuration = duration + 's';
-                    el.style.animationDelay = delay + 's';
+                    el.style.transitionDuration = duration + 's';
+                    el.style.transitionDelay = (parseFloat(delay) + 0.25) + 's';
 
-                    // Trigger the CSS animation defined in style.css
+                    // Tilda reveals elements by transitioning from their initial
+                    // opacity/transform when this class is applied.
                     el.classList.add('t-animate_started');
 
                     // Stop observing once triggered (one-shot animation)

@@ -570,18 +570,22 @@ body {
     box-sizing: border-box;
 }
 
-.style-reference-photo .tn-atom,
-.style-reference-photo .tn-atom__img {
+.style-reference-photo {
+    display: block !important;
+    overflow: hidden;
+    overflow: clip;
+    contain: layout paint;
+    isolation: isolate;
+}
+
+.style-reference-photo__img {
+    position: absolute;
+    inset: 0;
+    display: block;
     width: 100%;
     height: 100%;
-}
-
-.style-reference-photo .tn-atom {
-    overflow: hidden;
-}
-
-.style-reference-photo .tn-atom__img {
-    display: block;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: cover;
 }
 
@@ -700,6 +704,11 @@ body {
 }
 
 @media screen and (max-width: 1199px) {
+    .style-reference-photo {
+        width: 280px !important;
+        height: 403px !important;
+    }
+
     #rec718911148 .tn-elem[data-elem-id="1745854337625"] {
         left: calc(50% - 160px) !important;
         width: 320px !important;
@@ -759,39 +768,15 @@ body {
 }
 
 /* ------------------------------------------------------------
-   12. Animation Keyframes
-    ------------------------------------------------------------ */
-@keyframes t-fadein {
-    0%   { opacity: 0; }
-    100% { opacity: 1; }
-}
-
-@keyframes t-fadeinup {
-    0%   { opacity: 0; transform: translateY(var(--anim-distance, 100px)); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes t-fadeinright {
-    0%   { opacity: 0; transform: translateX(calc(var(--anim-distance, 100px) * -1)); }
-    100% { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes t-fadeinleft {
-    0%   { opacity: 0; transform: translateX(var(--anim-distance, 100px)); }
-    100% { opacity: 1; transform: translateX(0); }
-}
-
-
-
-/* ------------------------------------------------------------
-   13. Animation Classes — Data-Attribute Approach
-    JS adds `.t-animate_started` to elements with
-    `data-animate-style="..."` to trigger animations.
+   12. Tilda-Compatible Reveal Transitions
     ------------------------------------------------------------ */
 
-/* Only hide elements that have scroll-triggered animations.
-   Non-animated elements (paper backgrounds, corner decors, etc.)
-   remain visible at all times. */
+.animations-ready .tn-elem[data-animate-style] {
+    transition-property: opacity, transform;
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+    backface-visibility: hidden;
+}
+
 .animations-ready .tn-elem[data-animate-style]:not(.t-animate_started) {
     opacity: 0;
 }
@@ -808,23 +793,9 @@ body {
     transform: translateX(var(--anim-distance, 100px));
 }
 
-/* DO NOT set opacity:1 here — it causes a flash when animation starts.
-   Instead, each animation type handles its own opacity via keyframes. */
-
-.tn-elem[data-animate-style="fadein"].t-animate_started {
-    animation: t-fadein 3s ease both;
-}
-
-.tn-elem[data-animate-style="fadeinup"].t-animate_started {
-    animation: t-fadeinup 3s ease both;
-}
-
-.tn-elem[data-animate-style="fadeinright"].t-animate_started {
-    animation: t-fadeinright 1s ease both;
-}
-
-.tn-elem[data-animate-style="fadeinleft"].t-animate_started {
-    animation: t-fadeinleft 1s ease both;
+.tn-elem[data-animate-style].t-animate_started {
+    opacity: 1;
+    transform: none;
 }
 
 @media screen and (max-width: 640px) {
@@ -838,7 +809,7 @@ body {
     .animations-ready .tn-elem[data-animate-style],
     .tn-elem[data-animate-style].t-animate_started {
         opacity: 1 !important;
-        animation: none !important;
+        transition: none !important;
         transform: none !important;
     }
 }
