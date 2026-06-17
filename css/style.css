@@ -69,7 +69,7 @@ body {
 .t396__artboard {
     position: relative;
     width: 1200px;
-    height: 5943px;
+    height: 7250px;
     margin: 0 auto;
     overflow: hidden;
     transform-origin: top center;
@@ -389,12 +389,12 @@ body {
 @media screen and (max-width: 1199px) {
     .t396__artboard {
         width: 100%;
-        height: 4533px;
+        height: 5740px;
     }
 
     #rec718911148 .t396__carrier,
     #rec718911148 .t396__filter {
-        height: 4533px;
+        height: 5740px;
     }
 
     #rec718911148 .tn-elem[data-elem-id="1709672099725"] .tn-atom {
@@ -499,7 +499,7 @@ body {
 
     #rec718911148 .tn-elem[data-elem-id="1709724330686"] .tn-atom,
     #rec718911148 .tn-elem[data-elem-id="1710312698263"] .tn-atom {
-        font-size: 32px !important;
+        font-size: 29px !important;
     }
 
     #rec718911148 .tn-elem[data-elem-id="1710312698269"] .tn-atom,
@@ -508,8 +508,8 @@ body {
     }
 
     #rec718911148 .tn-elem[data-elem-id="1710312698269"] {
-        left: calc(50% - 160px + 43px) !important;
-        width: 235px !important;
+        left: calc(50% - 160px + 10px) !important;
+        width: 300px !important;
     }
 
     #rec718911148 .tn-elem[data-elem-id="1710312698313"] {
@@ -700,9 +700,35 @@ body {
 }
 
 @media screen and (max-width: 1199px) {
+    #rec718911148 .tn-elem[data-elem-id="1745854337625"] {
+        left: calc(50% - 160px) !important;
+        width: 320px !important;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="1745854337625"] .tn-atom {
+        font-size: 20px !important;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="176120245321866740"],
+    #rec718911148 .tn-elem[data-elem-id="1709724330686"],
+    #rec718911148 .tn-elem[data-elem-id="1710312698263"] {
+        left: calc(50% - 160px) !important;
+        width: 320px !important;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="1745854337636"] {
+        left: calc(50% - 160px + 5px) !important;
+        width: 310px !important;
+    }
+
     #rec718911148 .tn-elem[data-elem-id="1710312698233"] {
-        left: calc(50% - 160px + -10px) !important;
+        left: calc(50% - 160px) !important;
         width: 250px !important;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="1745854397556"],
+    #rec718911148 .tn-elem[data-elem-id="1710312698250"] {
+        left: calc(50% - 160px) !important;
     }
 
     #rec718911148 .tn-elem[data-elem-id="1710312698233"] .tn-atom,
@@ -741,17 +767,17 @@ body {
 }
 
 @keyframes t-fadeinup {
-    0%   { opacity: 0; transform: translateY(100px); }
+    0%   { opacity: 0; transform: translateY(var(--anim-distance, 100px)); }
     100% { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes t-fadeinright {
-    0%   { opacity: 0; transform: translateX(-100px); }
+    0%   { opacity: 0; transform: translateX(calc(var(--anim-distance, 100px) * -1)); }
     100% { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes t-fadeinleft {
-    0%   { opacity: 0; transform: translateX(100px); }
+    0%   { opacity: 0; transform: translateX(var(--anim-distance, 100px)); }
     100% { opacity: 1; transform: translateX(0); }
 }
 
@@ -770,27 +796,42 @@ body {
     opacity: 0;
 }
 
-.tn-elem[data-animate-style].t-animate_started {
-    opacity: 1;
+.animations-ready .tn-elem[data-animate-style="fadeinup"]:not(.t-animate_started) {
+    transform: translateY(var(--anim-distance, 100px));
+}
+
+.animations-ready .tn-elem[data-animate-style="fadeinright"]:not(.t-animate_started) {
+    transform: translateX(calc(var(--anim-distance, 100px) * -1));
+}
+
+.animations-ready .tn-elem[data-animate-style="fadeinleft"]:not(.t-animate_started) {
+    transform: translateX(var(--anim-distance, 100px));
 }
 
 /* DO NOT set opacity:1 here — it causes a flash when animation starts.
    Instead, each animation type handles its own opacity via keyframes. */
 
 .tn-elem[data-animate-style="fadein"].t-animate_started {
-    animation: t-fadein 3s ease forwards;
+    animation: t-fadein 3s ease both;
 }
 
 .tn-elem[data-animate-style="fadeinup"].t-animate_started {
-    animation: t-fadeinup 3s ease forwards;
+    animation: t-fadeinup 3s ease both;
 }
 
 .tn-elem[data-animate-style="fadeinright"].t-animate_started {
-    animation: t-fadeinright 1s ease forwards;
+    animation: t-fadeinright 1s ease both;
 }
 
 .tn-elem[data-animate-style="fadeinleft"].t-animate_started {
-    animation: t-fadeinleft 1s ease forwards;
+    animation: t-fadeinleft 1s ease both;
+}
+
+@media screen and (max-width: 640px) {
+    .animations-ready .tn-elem[data-animate-style]:not([data-animate-mobile="y"]):not(.t-animate_started) {
+        opacity: 1;
+        transform: none;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {

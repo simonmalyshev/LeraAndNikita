@@ -379,8 +379,8 @@
     document.addEventListener('DOMContentLoaded', function () {
         updateArtboardScale();
         applyResponsiveBreakpoints();
-        document.documentElement.classList.add('animations-ready');
         initScrollAnimations();
+        document.documentElement.classList.add('animations-ready');
         initHeartPulse();
         // Keep local assets eager-loaded. The source uses Tilda lazyload, but
         // hiding below-the-fold images before scroll makes full-page renders
