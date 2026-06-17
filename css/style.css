@@ -1,0 +1,769 @@
+/* ============================================================
+   Wedding Invitation — Style Sheet
+   Tilda-inspired 1:1 clone
+   All measurements mirror the original Tilda artboard (1200px)
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. Font Face Declarations
+   ------------------------------------------------------------ */
+
+@font-face {
+    font-family: 'Miama Nueva';
+    src: url('../fonts/miama.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Saint';
+    src: url('../fonts/saint-500.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Bohema Pink';
+    src: url('../fonts/BohemaPink.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ------------------------------------------------------------
+   2. Reset & Base Styles
+   ------------------------------------------------------------ */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    background-color: #efe9d6;
+    overflow-x: hidden;
+}
+
+#allrecords {
+    width: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ------------------------------------------------------------
+   4. T396 Artboard Container
+   The entire invitation is a single fixed-size artboard
+   that scales responsively via CSS transform.
+   ------------------------------------------------------------ */
+
+.t396 {
+    position: relative;
+    width: 100%;
+}
+
+.t396__artboard {
+    position: relative;
+    width: 1200px;
+    height: 5943px;
+    margin: 0 auto;
+    overflow: hidden;
+    transform-origin: top center;
+    background-color: #e5e5e5;
+}
+
+.t396__carrier {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: transparent;
+}
+
+.t396__filter {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: transparent;
+}
+
+/* ------------------------------------------------------------
+   5. tn-elem — Individual Artboard Elements
+   ------------------------------------------------------------ */
+
+.tn-elem {
+    position: absolute;
+    box-sizing: border-box;
+    display: table;
+    line-height: normal;
+    outline: none;
+}
+
+.tn-atom {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    -webkit-text-size-adjust: 100%;
+}
+
+/* Image inside tn-atom (legacy fallback) */
+.tn-atom img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.tn-atom__img {
+    width: 100%;
+    display: block;
+}
+
+/* Background image (used for paper textures) */
+.tn-atom.t-bgimg {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+/* ------------------------------------------------------------
+   6. Text Elements
+   All text blocks use the [field] attribute for content binding.
+   ------------------------------------------------------------ */
+
+.tn-atom[field] {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 400;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+/* ------------------------------------------------------------
+   7. Shape Elements
+    ------------------------------------------------------------ */
+
+.tn-elem[data-elem-type="shape"] .tn-atom {
+    width: 100%;
+    height: 100%;
+}
+
+/* Shape atom inline styles (border-radius, background-color) take priority by CSS cascade */
+
+/* ------------------------------------------------------------
+   8. Specific Element Overrides
+   ------------------------------------------------------------ */
+
+/* Calendar frame — olive border with opacity */
+.tn-elem[data-elem-id="176120245322476960"] .tn-atom {
+    border: 1px solid #142c0c;
+    opacity: 0.4;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Color swatch / dress-code circles — golden stroke, inline background-color fills
+   Six circles: 8275/8276/8278 are dress-code indicators (golden outline),
+   8279/8280/8282 are color-picker swatches (inline background-color) */
+.tn-elem[data-elem-id="1710312698275"] .tn-atom,
+.tn-elem[data-elem-id="1710312698276"] .tn-atom,
+.tn-elem[data-elem-id="1710312698278"] .tn-atom {
+    border-radius: 1000px;
+    border: 0;
+}
+
+.tn-elem[data-elem-id="1710312698279"] .tn-atom,
+.tn-elem[data-elem-id="1710312698280"] .tn-atom,
+.tn-elem[data-elem-id="1710312698282"] .tn-atom {
+    border-radius: 1000px;
+    border: 0;
+}
+
+/* ------------------------------------------------------------
+   9. Rotated Decorative Elements
+   Tilda applies transforms to create the desired visual angle.
+   ------------------------------------------------------------ */
+
+/* Corner-left — desktop 359deg, mobile 334deg in the original */
+#rec718911148 .tn-elem[data-elem-id="1709672099725"] .tn-atom {
+    -webkit-transform: rotate(359deg);
+    -moz-transform: rotate(359deg);
+    transform: rotate(359deg);
+}
+
+/* Corner-right — desktop 1deg, mobile 23deg in the original */
+#rec718911148 .tn-elem[data-elem-id="1701419355626"] .tn-atom {
+    -webkit-transform: rotate(1deg);
+    -moz-transform: rotate(1deg);
+    transform: rotate(1deg);
+}
+
+/* Source rotates the side floral elements into vertical columns on desktop. */
+#rec718911148 .tn-elem[data-elem-id="1709729261544"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="1709729931803"] .tn-atom {
+    -webkit-transform: rotate(-89deg);
+    -moz-transform: rotate(-89deg);
+    transform: rotate(-89deg);
+}
+
+#rec718911148 .tn-elem[data-elem-id="1709724335697"] .tn-atom {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+#rec718911148 .tn-elem[data-elem-id="1709729241648"] .tn-atom {
+    -webkit-transform: rotate(2deg);
+    -moz-transform: rotate(2deg);
+    transform: rotate(2deg);
+}
+
+/* Decor-2 (bottom floral) — 180deg */
+#rec718911148 .tn-elem[data-elem-id="1710312698227"] .tn-atom {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+/* Dress-code decor — no desktop rotation in the source */
+#rec718911148 .tn-elem[data-elem-id="1710312698266"] .tn-atom {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+/* Icon decor — no desktop rotation in the source */
+#rec718911148 .tn-elem[data-elem-id="1710312698283"] .tn-atom {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+/* Floral elements have filter: contrast(93%) */
+#rec718911148 .tn-elem[data-elem-id="1709729261544"],
+#rec718911148 .tn-elem[data-elem-id="1709729931803"],
+#rec718911148 .tn-elem[data-elem-id="1709724335697"],
+#rec718911148 .tn-elem[data-elem-id="1709719261337"],
+#rec718911148 .tn-elem[data-elem-id="1709729241648"],
+#rec718911148 .tn-elem[data-elem-id="1710312698227"] {
+    -webkit-filter: contrast(93%);
+    filter: contrast(93%);
+    z-index: 3 !important;
+}
+
+/* Editable text replacements for source raster lettering. */
+#rec718911148 .tn-elem[data-elem-id="1650640489506"] .tn-atom {
+    font-family: 'Cormorant Garamond', Georgia, serif !important;
+    font-size: 62px !important;
+    line-height: 1.08 !important;
+    font-weight: 400 !important;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+#rec718911148 .tn-elem[data-elem-id="1701419727133"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="1701419904995"] .tn-atom {
+    background: #142c0c !important;
+}
+
+#rec718911148 .tn-elem[data-elem-id="1745854337625"] .tn-atom {
+    font-family: 'Saint', Arial, sans-serif !important;
+    line-height: 1.2 !important;
+    font-weight: 500 !important;
+}
+
+#rec718911148 .tn-elem[data-elem-id="1701419281594"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="1709673024999"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="176120245321866740"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="1709724330686"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="1710312698263"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="1710312698269"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="1710312698313"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="1710312698233"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="1710312698242"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="1710312698250"] .tn-atom {
+    font-family: 'Miama Nueva', cursive !important;
+    color: #a78309 !important;
+    font-weight: 400 !important;
+    line-height: 1 !important;
+    letter-spacing: 1px;
+}
+
+#rec718911148 .tn-elem[data-elem-id="1701419281594"] {
+    display: none;
+}
+
+#rec718911148 .tn-elem[data-elem-id="1701419281594"] .tn-atom {
+    font-size: 35px !important;
+}
+
+#rec718911148 .tn-elem[data-elem-id="1709673024999"] .tn-atom {
+    font-size: 40px !important;
+    line-height: 1 !important;
+}
+
+#rec718911148 .tn-elem[data-elem-id="176120245321866740"] .tn-atom {
+    font-size: 38px !important;
+    line-height: 1.1 !important;
+    white-space: nowrap !important;
+    letter-spacing: 0 !important;
+}
+
+#rec718911148 .tn-elem[data-elem-id="176120245321866740"] {
+    top: 1168px !important;
+    width: 484px !important;
+}
+
+#rec718911148 .tn-elem[data-elem-id^="17612024532"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id^="17612024533"] .tn-atom {
+    font-family: 'Montserrat', Arial, sans-serif !important;
+    font-weight: 300 !important;
+}
+
+#rec718911148 .tn-elem[data-elem-id="176120245323026410"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="176120245323724260"] .tn-atom {
+    font-weight: 400 !important;
+}
+
+#rec718911148 .tn-elem[data-elem-id="176120245321866740"] .tn-atom {
+    font-family: 'Miama Nueva', cursive !important;
+    font-size: 38px !important;
+    font-weight: 400 !important;
+    line-height: 1.1 !important;
+    white-space: nowrap !important;
+}
+
+#rec718911148 .tn-elem[data-elem-id="176120245323026410"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="176120245323724260"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="176120245324889210"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="176120245327560850"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="176120245327265520"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="176120245326937650"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="176120245326628040"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="176120245326279940"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="176120245325951220"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="176120245322681380"] .tn-atom {
+    color: #142c0c !important;
+}
+
+#rec718911148 .tn-elem[data-elem-id="1709724330686"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="1710312698263"] .tn-atom {
+    font-size: 56px !important;
+}
+
+#rec718911148 .tn-elem[data-elem-id="1710312698269"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="1710312698313"] .tn-atom {
+    font-size: 52px !important;
+}
+
+#rec718911148 .tn-elem[data-elem-id="1710312698233"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="1710312698242"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="1710312698250"] .tn-atom {
+    font-size: 36px !important;
+}
+
+#rec718911148 .tn-elem[data-elem-id="1710312698233"] {
+    left: calc(50% - 600px + 432px) !important;
+    width: 350px !important;
+}
+
+@media screen and (max-width: 1199px) {
+    .t396__artboard {
+        width: 100%;
+        height: 4533px;
+    }
+
+    #rec718911148 .t396__carrier,
+    #rec718911148 .t396__filter {
+        height: 4533px;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="1709672099725"] .tn-atom {
+        -webkit-transform: rotate(334deg);
+        -moz-transform: rotate(334deg);
+        transform: rotate(334deg);
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="1701419355626"] .tn-atom {
+        -webkit-transform: rotate(23deg);
+        -moz-transform: rotate(23deg);
+        transform: rotate(23deg);
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="1650640489506"] .tn-atom {
+        font-size: 43px !important;
+        letter-spacing: 3px;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="1701419281594"] .tn-atom {
+        font-size: 25px !important;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="1709673024999"] .tn-atom {
+        font-size: 34px !important;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="176120245321866740"] .tn-atom {
+        font-size: 24px !important;
+        line-height: 1.1 !important;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="176120245321866740"] {
+        top: 1093px !important;
+        left: calc(50% - 160px - 3px) !important;
+        width: 326px !important;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="1745854337625"] {
+        top: 939px !important;
+        left: calc(50% - 160px - 5px) !important;
+        width: 330px !important;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="176120245323026410"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245323724260"] .tn-atom {
+        font-size: 19px !important;
+        font-weight: 400 !important;
+        line-height: 29px !important;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="176120245324889210"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245327560850"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245327265520"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245326937650"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245326628040"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245326279940"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245325951220"] .tn-atom {
+        font-size: 15px !important;
+        font-weight: 300 !important;
+        line-height: 23px !important;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="176120245327974200"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245328297480"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245337166210"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245337554270"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245337854120"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245325686620"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245323454180"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245329692320"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245330036560"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245330375120"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245330713160"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245331076940"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245331385260"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245332324230"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245332695830"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245333019860"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245333335430"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245333627820"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245334057400"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245328882080"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245335168740"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245335436840"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245335773570"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245336147620"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245336417660"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245334412310"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245331969800"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245324113350"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245325221120"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245329955910"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245328548890"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245329293750"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245336760230"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="176120245334720940"] .tn-atom {
+        font-size: 19px !important;
+        font-weight: 300 !important;
+        line-height: 29px !important;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="1709724330686"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="1710312698263"] .tn-atom {
+        font-size: 32px !important;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="1710312698269"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="1710312698313"] .tn-atom {
+        font-size: 34px !important;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="1710312698269"] {
+        left: calc(50% - 160px + 43px) !important;
+        width: 235px !important;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="1710312698313"] {
+        left: calc(50% - 160px + 54px) !important;
+        width: 220px !important;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="1710312698233"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="1710312698242"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="1710312698250"] .tn-atom {
+        font-size: 25px !important;
+        line-height: 1 !important;
+        white-space: nowrap !important;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="1710312698233"] {
+        left: calc(50% - 160px + -5px) !important;
+        width: 210px !important;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="1710312698242"] {
+        left: calc(50% - 160px + 8px) !important;
+        width: 300px !important;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="1710312698250"] {
+        left: calc(50% - 160px + -5px) !important;
+        width: 235px !important;
+    }
+}
+
+/* ------------------------------------------------------------
+   10. Form Styles
+    RSVP form with golden borders and olive submit button.
+    ------------------------------------------------------------ */
+
+.t-form {
+    width: 100%;
+}
+
+.t-input-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.t-input {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #a78309;
+    border-radius: 0;
+    color: #142c0c;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 0 15px;
+    background: transparent;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.t-input::placeholder {
+    color: #142c0c;
+    opacity: 0.6;
+}
+
+.t-input:focus {
+    border-color: #a78309;
+}
+
+.t-submit {
+    width: 202px;
+    height: 50px;
+    background-color: #969a65;
+    color: #ffffff;
+    border: none;
+    border-radius: 0;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+    outline: none;
+    transition: opacity 0.2s ease;
+}
+
+.t-submit:hover {
+    opacity: 0.85;
+}
+
+.t-form__successbox {
+    display: none;
+    margin-bottom: 15px;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+}
+
+.t-form__successbox div {
+    color: #004728;
+    font-size: 18px;
+}
+
+.t-form__inputsbox {
+    width: 100%;
+}
+
+.t-form__submit {
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* ------------------------------------------------------------
+   10. Radio Button & Input Title Styles
+    ------------------------------------------------------------ */
+
+.t-radio {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 16px;
+    color: #142c0c;
+    margin-bottom: 5px;
+}
+
+.t-radio input[type="radio"] {
+    accent-color: #a78309;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+}
+
+.t-radio__wrapper {
+    margin-top: 5px;
+}
+
+.t-input-title {
+    color: #142c0c;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+/* ------------------------------------------------------------
+   11. Link Styles
+    ------------------------------------------------------------ */
+
+#allrecords a {
+    color: #ff8562;
+    text-decoration: none;
+}
+
+/* ------------------------------------------------------------
+   12. Animation Keyframes
+    ------------------------------------------------------------ */
+@keyframes t-fadein {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes t-fadeinup {
+    0%   { opacity: 0; transform: translateY(100px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes t-fadeinright {
+    0%   { opacity: 0; transform: translateX(-100px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes t-fadeinleft {
+    0%   { opacity: 0; transform: translateX(100px); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+
+
+/* ------------------------------------------------------------
+   13. Animation Classes — Data-Attribute Approach
+    JS adds `.t-animate_started` to elements with
+    `data-animate-style="..."` to trigger animations.
+    ------------------------------------------------------------ */
+
+/* Only hide elements that have scroll-triggered animations.
+   Non-animated elements (paper backgrounds, corner decors, etc.)
+   remain visible at all times. */
+.tn-elem[data-animate-style] {
+    opacity: 1;
+}
+
+.tn-elem[data-animate-style].t-animate_started {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* DO NOT set opacity:1 here — it causes a flash when animation starts.
+   Instead, each animation type handles its own opacity via keyframes. */
+
+.tn-elem[data-animate-style="fadein"].t-animate_started {
+    animation: t-fadein 3s ease forwards;
+}
+
+.tn-elem[data-animate-style="fadeinup"].t-animate_started {
+    animation: t-fadeinup 3s ease forwards;
+}
+
+.tn-elem[data-animate-style="fadeinright"].t-animate_started {
+    animation: t-fadeinright 1s ease forwards;
+}
+
+.tn-elem[data-animate-style="fadeinleft"].t-animate_started {
+    animation: t-fadeinleft 1s ease forwards;
+}
+
+/* Heart pulse is now handled by JavaScript (initHeartPulse) for SBS-like timing */
+
+/* ------------------------------------------------------------
+   14. Responsive Scaling
+    On desktop the artboard renders at native size via CSS.
+    On narrow viewports JS applies a proportional CSS transform.
+    ------------------------------------------------------------ */
+
+/* ≥1200px — no scaling, native artboard size */
+@media screen and (min-width: 1200px) {
+    .t396__artboard {
+        transform: none;
+    }
+}
+
+/* ------------------------------------------------------------
+   15. Print Styles
+    ------------------------------------------------------------ */
+
+@media print {
+    body,
+    html {
+        min-width: 1200px;
+        max-width: 1200px;
+        padding: 0;
+        margin: 0 auto;
+        border: none;
+    }
+
+    .t396__artboard {
+        transform: none !important;
+    }
+
+    .tn-elem {
+        opacity: 1 !important;
+        animation: none !important;
+    }
+}
