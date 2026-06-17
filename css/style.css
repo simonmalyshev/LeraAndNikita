@@ -700,14 +700,12 @@ body {
 /* Only hide elements that have scroll-triggered animations.
    Non-animated elements (paper backgrounds, corner decors, etc.)
    remain visible at all times. */
-.tn-elem[data-animate-style] {
-    opacity: 1;
+.animations-ready .tn-elem[data-animate-style]:not(.t-animate_started) {
+    opacity: 0;
 }
 
 .tn-elem[data-animate-style].t-animate_started {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
+    opacity: 1;
 }
 
 /* DO NOT set opacity:1 here — it causes a flash when animation starts.
@@ -727,6 +725,15 @@ body {
 
 .tn-elem[data-animate-style="fadeinleft"].t-animate_started {
     animation: t-fadeinleft 1s ease forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animations-ready .tn-elem[data-animate-style],
+    .tn-elem[data-animate-style].t-animate_started {
+        opacity: 1 !important;
+        animation: none !important;
+        transform: none !important;
+    }
 }
 
 /* Heart pulse is now handled by JavaScript (initHeartPulse) for SBS-like timing */
