@@ -69,7 +69,7 @@ body {
 .t396__artboard {
     position: relative;
     width: 1200px;
-    height: 7049px;
+    height: 6757px;
     margin: 0 auto;
     overflow: hidden;
     transform-origin: top center;
@@ -264,6 +264,34 @@ body {
     transform: rotate(180deg);
 }
 
+.farewell-text {
+    color: #142c0c;
+    text-align: center;
+}
+
+.farewell-text__script,
+.farewell-text__emphasis {
+    display: block;
+    white-space: nowrap;
+}
+
+.farewell-text__script {
+    color: #a78309;
+    font-family: 'Miama Nueva', cursive;
+    font-size: 94px;
+    font-weight: 400;
+    line-height: 0.92;
+}
+
+.farewell-text__emphasis {
+    margin-top: 0;
+    color: #142c0c;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 86px;
+    font-weight: 400;
+    line-height: 0.85;
+}
+
 /* Dress-code decor — no desktop rotation in the source */
 #rec718911148 .tn-elem[data-elem-id="1710312698266"] .tn-atom {
     -webkit-transform: rotate(0deg);
@@ -409,7 +437,7 @@ body {
 @media screen and (max-width: 1199px) {
     .t396__artboard {
         width: 100%;
-        height: 5575px;
+        height: 5287px;
     }
 
     .t396__artboard::before {
@@ -418,7 +446,7 @@ body {
 
     #rec718911148 .t396__carrier,
     #rec718911148 .t396__filter {
-        height: 5575px;
+        height: 5287px;
     }
 
     #rec718911148 .tn-elem[data-elem-id="1709672099725"] .tn-atom {
@@ -431,6 +459,15 @@ body {
         -webkit-transform: rotate(23deg);
         -moz-transform: rotate(23deg);
         transform: rotate(23deg);
+    }
+
+    .farewell-text__script {
+        font-size: 39px;
+    }
+
+    .farewell-text__emphasis {
+        margin-top: 0;
+        font-size: 38px;
     }
 
     #rec718911148 .tn-elem[data-elem-id="1650640489506"] .tn-atom {
