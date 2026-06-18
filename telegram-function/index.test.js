@@ -18,7 +18,7 @@ function validPayload() {
         site: 'lera-and-nikita',
         guest_names: 'Иван Иванов & Мария',
         attendance: 'Да, с удовольствием!',
-        drinks: ['Шампанское', 'Коньяк', 'Поддельное значение'],
+        drinks: ['Шампанское', 'Самогон', 'Коньяк', 'Поддельное значение'],
         favorite_track: 'Earth, Wind & Fire <September>',
         website: ''
     };
@@ -51,6 +51,7 @@ test('routes the new site to its dedicated chat and escapes Telegram HTML', asyn
     assert.equal(telegramBody.chat_id, '222');
     assert.match(telegramBody.text, /Иван Иванов &amp; Мария/);
     assert.match(telegramBody.text, /Earth, Wind &amp; Fire &lt;September&gt;/);
+    assert.match(telegramBody.text, /Самогон/);
     assert.doesNotMatch(telegramBody.text, /Поддельное значение/);
 });
 
