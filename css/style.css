@@ -718,9 +718,20 @@ body {
     margin: 0 0 8px;
 }
 
-#rec718911148 .tn-elem[data-elem-id="1745854458145"],
-#rec718911148 .tn-elem[data-elem-id="1745854490104"] {
-    display: none;
+#rec718911148 .tn-elem[data-elem-id="1745854397556"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="1745854458145"] .tn-atom,
+#rec718911148 .tn-elem[data-elem-id="1745854490104"] .tn-atom {
+    color: #142c0c;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.timeline-address {
+    color: #a78309;
+    font-weight: 600;
 }
 
 #rec718911148 .tn-elem[data-elem-id="1710312698233"] {
@@ -762,6 +773,13 @@ body {
     #rec718911148 .tn-elem[data-elem-id="1745854397556"],
     #rec718911148 .tn-elem[data-elem-id="1710312698250"] {
         left: calc(50% - 160px) !important;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="1745854397556"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="1745854458145"] .tn-atom,
+    #rec718911148 .tn-elem[data-elem-id="1745854490104"] .tn-atom {
+        font-size: 15px !important;
+        line-height: 1.15 !important;
     }
 
     #rec718911148 .tn-elem[data-elem-id="1710312698233"] .tn-atom,
