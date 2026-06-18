@@ -69,7 +69,7 @@ body {
 .t396__artboard {
     position: relative;
     width: 1200px;
-    height: 6207px;
+    height: 6303px;
     margin: 0 auto;
     overflow: hidden;
     transform-origin: top center;
@@ -458,7 +458,7 @@ body {
 @media screen and (max-width: 1199px) {
     .t396__artboard {
         width: 100%;
-        height: 5043px;
+        height: 5139px;
     }
 
     .t396__artboard::before {
@@ -467,7 +467,7 @@ body {
 
     #rec718911148 .t396__carrier,
     #rec718911148 .t396__filter {
-        height: 5043px;
+        height: 5139px;
     }
 
     .post-location-content {
@@ -725,12 +725,17 @@ body {
 }
 
 .t-form__feedback {
-    margin-bottom: 20px;
+    width: 100%;
     text-align: center;
-    padding: 14px;
+    padding: 10px;
     font-family: 'Montserrat', Arial, sans-serif;
-    font-size: 15px;
-    line-height: 1.4;
+    font-size: 14px;
+    line-height: 1.35;
+}
+
+.t-form__feedback-slot {
+    height: 96px;
+    padding-top: 14px;
 }
 
 .t-form__feedback--success {

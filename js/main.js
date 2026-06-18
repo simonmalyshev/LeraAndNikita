@@ -350,6 +350,9 @@
             feedback.textContent = message;
             feedback.className = 'js-form-feedback t-form__feedback t-form__feedback--' + type;
             feedback.hidden = false;
+            requestAnimationFrame(function () {
+                feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            });
         }
 
         function setPending(isPending) {
