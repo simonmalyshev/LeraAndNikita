@@ -497,11 +497,13 @@
                     <!-- Form (z:52) -->
                     <div class="tn-elem t-animate" data-elem-id="1710312698316" data-elem-type="form" data-animate-style="fadeinup" data-animate-duration="2" data-animate-distance="100" style="z-index:52; top:5315px; left:calc(50% - 600px + 325px); width:550px;" data-animate-mobile="y" data-field-top-value="5315" data-field-left-value="325" data-field-width-value="550" data-field-heightmode-value="hug" data-field-top-res-320-value="4170" data-field-left-res-320-value="10" data-field-width-res-320-value="300">
                         <div class="tn-atom tn-atom__form">
-                            <form class="t-form js-form-proccess" method="post">
-                                <div class="js-successbox t-form__successbox" style="display:none;">
-                                    <div style="color:#004728;">Спасибо! Ваши данные отправлены!</div>
-                                </div>
+                            <form class="t-form js-form-proccess" method="post" novalidate>
+                                <div class="js-form-feedback t-form__feedback" role="status" aria-live="polite" hidden></div>
                                 <div class="t-form__inputsbox">
+                                    <div class="t-form__website" aria-hidden="true">
+                                        <label for="guest-website">Не заполняйте это поле</label>
+                                        <input id="guest-website" name="website" type="text" tabindex="-1" autocomplete="off">
+                                    </div>
                                     <div class="t-input-group">
                                         <label class="t-input-title" for="guest-names">Ваше ФИО и ФИО пары, если будете не один/одна</label>
                                         <input id="guest-names" name="guest_names" type="text" class="t-input js-tilda-rule" placeholder="Иванов Иван Иванович, Иванова Мария" data-tilda-req="1" autocomplete="name">
@@ -538,7 +540,7 @@
                                         <input id="favorite-track" name="favorite_track" type="text" class="t-input" placeholder="Bruno Mars — Just The Way You Are">
                                     </div>
                                     <div class="t-form__submit">
-                                        <button type="submit" class="t-submit">Отправить!</button>
+                                        <button type="submit" class="t-submit" data-idle-text="Отправить!" data-pending-text="Отправка…">Отправить!</button>
                                     </div>
                                 </div>
                             </form>

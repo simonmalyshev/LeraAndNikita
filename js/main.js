@@ -331,49 +331,101 @@
     }
 
     // ──────────────────────────────────────────────
-    // 6. Form Handling (visual only, no data sent)
+    // 6. RSVP form submission
     // ──────────────────────────────────────────────
 
-    /**
-     * Handles the RSVP form submission — validates required fields
-     * and shows the success message, hiding the inputs.
-     */
+    // Dedicated unified function for this site. The production function currently
+    // used by Invintation remains unchanged.
+    var RSVP_ENDPOINT = 'https://functions.yandexcloud.net/d4e9i19l0j4qjmotejt6';
+
     function initForm() {
         var form = document.querySelector('.js-form-proccess');
         if (!form) return;
 
-        form.addEventListener('submit', function (e) {
+        var feedback = form.querySelector('.js-form-feedback');
+        var submitButton = form.querySelector('button[type="submit"]');
+        var nameInput = form.querySelector('input[name="guest_names"]');
+
+        function showFeedback(message, type) {
+            feedback.textContent = message;
+            feedback.className = 'js-form-feedback t-form__feedback t-form__feedback--' + type;
+            feedback.hidden = false;
+        }
+
+        function setPending(isPending) {
+            submitButton.disabled = isPending;
+            submitButton.setAttribute('aria-busy', String(isPending));
+            submitButton.textContent = isPending
+                ? submitButton.getAttribute('data-pending-text')
+                : submitButton.getAttribute('data-idle-text');
+        }
+
+        form.addEventListener('submit', async function (e) {
             e.preventDefault();
 
-            // Simple validation
-            var nameInput = this.querySelector('.t-input[data-tilda-req="1"]');
             var radioChecked = this.querySelector('input[name="attendance"]:checked');
+            nameInput.classList.remove('t-input--error');
+            feedback.hidden = true;
 
-            // Reset any previous error styling
-            if (nameInput) {
-                nameInput.style.borderColor = '';
-            }
-
-            // Validate name field
-            if (nameInput && !nameInput.value.trim()) {
-                nameInput.style.borderColor = 'red';
+            if (!nameInput.value.trim()) {
+                nameInput.classList.add('t-input--error');
+                showFeedback('Пожалуйста, укажите ваше имя.', 'error');
                 nameInput.focus();
                 return;
             }
 
-            // Validate radio selection
             if (!radioChecked) {
-                alert('Пожалуйста, выберите, сможете ли вы присутствовать');
+                showFeedback('Пожалуйста, выберите, сможете ли вы присутствовать.', 'error');
                 return;
             }
 
-            // Validation passed — show success message
-            var successBox = this.querySelector('.js-successbox');
-            var inputsBox = this.querySelector('.t-form__inputsbox');
+            var drinks = Array.prototype.map.call(
+                this.querySelectorAll('input[name="drinks"]:checked'),
+                function (input) { return input.value; }
+            );
 
-            if (successBox && inputsBox) {
-                inputsBox.style.display = 'none';
-                successBox.style.display = 'block';
+            var payload = {
+                site: 'lera-and-nikita',
+                guest_names: nameInput.value.trim(),
+                attendance: radioChecked.value,
+                drinks: drinks,
+                favorite_track: this.querySelector('input[name="favorite_track"]').value.trim(),
+                website: this.querySelector('input[name="website"]').value
+            };
+
+            if (!/^https:\/\/functions\.yandexcloud\.net\/[A-Za-z0-9_-]+$/.test(RSVP_ENDPOINT)) {
+                console.error('RSVP endpoint is not configured');
+                showFeedback('Форма временно не настроена. Пожалуйста, сообщите об этом организаторам.', 'error');
+                return;
+            }
+
+            setPending(true);
+            showFeedback('Отправляем ваш ответ…', 'pending');
+
+            var controller = new AbortController();
+            var requestTimeout = setTimeout(function () { controller.abort(); }, 20000);
+
+            try {
+                var response = await fetch(RSVP_ENDPOINT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload),
+                    signal: controller.signal
+                });
+                var result = await response.json();
+
+                if (!response.ok || !result.success) {
+                    throw new Error(result.error || 'Request failed');
+                }
+
+                form.reset();
+                showFeedback('Спасибо! Ваши данные отправлены.', 'success');
+            } catch (error) {
+                console.error('RSVP submission failed:', error);
+                showFeedback('Не удалось отправить данные. Проверьте интернет и попробуйте ещё раз.', 'error');
+            } finally {
+                clearTimeout(requestTimeout);
+                setPending(false);
             }
         });
     }

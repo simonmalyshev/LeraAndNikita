@@ -659,6 +659,10 @@ body {
     border-color: #a78309;
 }
 
+.t-input--error {
+    border-color: #a53030;
+}
+
 .t-submit {
     width: 100%;
     max-width: 360px;
@@ -682,17 +686,41 @@ body {
     opacity: 0.85;
 }
 
-.t-form__successbox {
-    display: none;
-    margin-bottom: 15px;
-    text-align: center;
-    padding: 20px;
-    font-size: 14px;
+.t-submit:disabled {
+    cursor: wait;
+    opacity: 0.65;
 }
 
-.t-form__successbox div {
+.t-form__feedback {
+    margin-bottom: 20px;
+    text-align: center;
+    padding: 14px;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.t-form__feedback--success {
     color: #004728;
-    font-size: 18px;
+    background: rgba(0, 71, 40, 0.08);
+}
+
+.t-form__feedback--error {
+    color: #8b1e1e;
+    background: rgba(139, 30, 30, 0.08);
+}
+
+.t-form__feedback--pending {
+    color: #142c0c;
+    background: rgba(167, 131, 9, 0.08);
+}
+
+.t-form__website {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
 }
 
 .t-form__inputsbox {
