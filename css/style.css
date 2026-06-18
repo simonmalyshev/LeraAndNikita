@@ -69,11 +69,29 @@ body {
 .t396__artboard {
     position: relative;
     width: 1200px;
-    height: 6757px;
+    height: 6207px;
     margin: 0 auto;
     overflow: hidden;
     transform-origin: top center;
     background-color: #e5e5e5;
+}
+
+.post-location-content {
+    position: absolute;
+    inset: 0;
+    top: -550px;
+}
+
+#rec718911148 .tn-elem[data-elem-id="1710312698310"] {
+    display: none !important;
+}
+
+#rec718911148 .tn-elem[data-elem-id="1710312698266"] {
+    top: 2994px !important;
+}
+
+#rec718911148 .tn-elem[data-elem-id="1710312698283"] {
+    top: 4240px !important;
 }
 
 .t396__artboard::before {
@@ -440,7 +458,7 @@ body {
 @media screen and (max-width: 1199px) {
     .t396__artboard {
         width: 100%;
-        height: 5287px;
+        height: 5043px;
     }
 
     .t396__artboard::before {
@@ -449,7 +467,19 @@ body {
 
     #rec718911148 .t396__carrier,
     #rec718911148 .t396__filter {
-        height: 5287px;
+        height: 5043px;
+    }
+
+    .post-location-content {
+        top: -244px;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="1710312698266"] {
+        top: 2599px !important;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="1710312698283"] {
+        top: 3496px !important;
     }
 
     #rec718911148 .tn-elem[data-elem-id="1709672099725"] .tn-atom {
