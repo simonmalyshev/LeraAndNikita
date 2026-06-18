@@ -69,11 +69,31 @@ body {
 .t396__artboard {
     position: relative;
     width: 1200px;
-    height: 7250px;
+    height: 7050px;
     margin: 0 auto;
     overflow: hidden;
     transform-origin: top center;
     background-color: #e5e5e5;
+}
+
+.t396__artboard::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: #fff url('../images/paper-texture.jpg') 50% 0 / 1552px 965px repeat-y;
+    opacity: 0.35;
+}
+
+#rec718911148 .tn-elem[data-elem-id="1701418744977"],
+#rec718911148 .tn-elem[data-elem-id="1709726699250"],
+#rec718911148 .tn-elem[data-elem-id="1710312750356"],
+#rec718911148 .tn-elem[data-elem-id="1710312839924"],
+#rec718911148 .tn-elem[data-elem-id="1710312944362"],
+#rec718911148 .tn-elem[data-elem-id="1710312698224"],
+#rec718911148 .tn-elem[data-elem-id="1710313105443"] {
+    display: none !important;
 }
 
 .t396__carrier {
@@ -389,12 +409,16 @@ body {
 @media screen and (max-width: 1199px) {
     .t396__artboard {
         width: 100%;
-        height: 5740px;
+        height: 5620px;
+    }
+
+    .t396__artboard::before {
+        background-size: 614px 966px;
     }
 
     #rec718911148 .t396__carrier,
     #rec718911148 .t396__filter {
-        height: 5740px;
+        height: 5620px;
     }
 
     #rec718911148 .tn-elem[data-elem-id="1709672099725"] .tn-atom {
