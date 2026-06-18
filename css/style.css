@@ -385,6 +385,9 @@ body {
 #rec718911148 .tn-elem[data-elem-id^="17612024533"] .tn-atom {
     font-family: 'Montserrat', Arial, sans-serif !important;
     font-weight: 300 !important;
+    white-space: nowrap !important;
+    word-break: keep-all;
+    overflow-wrap: normal;
 }
 
 #rec718911148 .tn-elem[data-elem-id="176120245323026410"] .tn-atom,
