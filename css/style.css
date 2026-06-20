@@ -371,7 +371,7 @@ body {
 }
 
 .farewell-text__emphasis {
-    margin-top: 0;
+    margin-top: 32px;
     color: #142c0c;
     font-family: 'Cormorant Garamond', Georgia, serif;
     font-size: 86px;
@@ -572,7 +572,7 @@ body {
     }
 
     .farewell-text__emphasis {
-        margin-top: 0;
+        margin-top: 14px;
         font-size: 38px;
     }
 
