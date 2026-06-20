@@ -180,20 +180,22 @@
                     if (!entry.isIntersecting) return;
 
                     var el = entry.target;
-                    var duration = el.getAttribute('data-animate-duration') || '1';
-                    var delay = usesMobileArtboard
-                        ? el.getAttribute('data-animate-delay-res-320') || el.getAttribute('data-animate-delay') || '0'
-                        : el.getAttribute('data-animate-delay') || '0';
+                    var groupName = el.getAttribute('data-animate-group');
+                    var revealElements = groupName
+                        ? document.querySelectorAll('.tn-elem[data-animate-group="' + groupName + '"]')
+                        : [el];
 
-                    el.style.transitionDuration = duration + 's';
-                    el.style.transitionDelay = (parseFloat(delay) + 0.25) + 's';
+                    revealElements.forEach(function (revealEl) {
+                        var duration = revealEl.getAttribute('data-animate-duration') || '1';
+                        var delay = usesMobileArtboard
+                            ? revealEl.getAttribute('data-animate-delay-res-320') || revealEl.getAttribute('data-animate-delay') || '0'
+                            : revealEl.getAttribute('data-animate-delay') || '0';
 
-                    // Tilda reveals elements by transitioning from their initial
-                    // opacity/transform when this class is applied.
-                    el.classList.add('t-animate_started');
-
-                    // Stop observing once triggered (one-shot animation)
-                    observer.unobserve(el);
+                        revealEl.style.transitionDuration = duration + 's';
+                        revealEl.style.transitionDelay = (parseFloat(delay) + 0.25) + 's';
+                        revealEl.classList.add('t-animate_started');
+                        observer.unobserve(revealEl);
+                    });
                 });
             },
             {

@@ -82,6 +82,12 @@ body {
     top: -550px;
 }
 
+.calendar-group {
+    position: absolute;
+    inset: 0;
+    top: 290px;
+}
+
 #rec718911148 .tn-elem[data-elem-id="1710312698310"] {
     display: none !important;
 }
@@ -167,6 +173,69 @@ body {
 .tn-atom__img {
     width: 100%;
     display: block;
+}
+
+.header-photo {
+    display: block;
+    overflow: hidden;
+}
+
+.header-photo .tn-atom {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.header-photo .tn-atom__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+}
+
+.header-photo-foreground {
+    display: block;
+    overflow: hidden;
+}
+
+.header-photo-foreground .tn-atom,
+.header-photo-foreground .tn-atom__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.header-photo-foreground .tn-atom__img {
+    object-fit: cover;
+    object-position: center 46%;
+}
+
+@media screen and (min-width: 1200px) {
+    .header-photo .tn-atom__img {
+        object-fit: contain;
+        object-position: center bottom;
+        -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);
+        mask-image: linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="1709724335697"] {
+        top: 900px !important;
+        height: 337px !important;
+    }
+
+    .header-photo-foreground .tn-atom__img {
+        object-fit: contain;
+        object-position: center;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="1709729241648"] {
+        display: none !important;
+    }
+
+    #rec718911148 .tn-elem[data-elem-id="1709729261544"],
+    #rec718911148 .tn-elem[data-elem-id="1709729931803"] {
+        top: 1357px !important;
+    }
 }
 
 /* Background image (used for paper textures) */
@@ -472,6 +541,10 @@ body {
 
     .post-location-content {
         top: -244px;
+    }
+
+    .calendar-group {
+        top: 0;
     }
 
     #rec718911148 .tn-elem[data-elem-id="1710312698266"] {
